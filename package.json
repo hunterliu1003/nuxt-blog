@@ -10,13 +10,18 @@
     "start": "cross-env NODE_ENV=production node server/index.js",
     "generate": "nuxt generate",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "storybook": "start-storybook -p 9000 -c .storybook",
+    "build:storybook": "build-storybook -c .storybook -o .out",
+    "plop": "plop --plopfile ./plop/index.js"
   },
   "dependencies": {
     "nuxt": "^1.0.0",
     "express": "^4.15.3",
     "vuetify": "^0.17.3",
-    "@nuxtjs/axios": "^5.0.0"
+    "@nuxtjs/axios": "^5.0.0",
+    "vue": "^2.5.16",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "cross-env": "^5.0.1",
@@ -24,8 +29,20 @@
     "eslint": "^4.15.0",
     "eslint-loader": "^1.7.1",
     "eslint-plugin-vue": "^4.0.0",
+    "nodemon": "^1.11.0",
+    "@storybook/addon-actions": "^3.3.15",
+    "@storybook/addon-centered": "^3.3.15",
+    "@storybook/addon-options": "^3.3.15",
+    "@storybook/addon-viewport": "^3.3.15",
+    "@storybook/addons": "^3.3.15",
+    "@storybook/vue": "^3.3.15",
+    "babel-core": "^6.26.0",
+    "plop": "^2.0.0",
+    "pug": "^2.0.1",
+    "storybook-readme": "^3.3.0",
     "stylus": "^0.54.5",
-    "stylus-loader": "^3.0.1",
-    "nodemon": "^1.11.0"
+    "stylus-loader": "^3.0.2",
+    "vue-loader": "^14.2.1",
+    "vue-template-compiler": "^2.5.16"
   }
 }
