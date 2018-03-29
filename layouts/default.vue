@@ -1,72 +1,51 @@
-<template>
-  <v-app dark>
-    <v-content>
-      <v-container fluid>
-        <v-layout row wrap class="layout">
-          <div class="nav">
-            <div class="text-xs-center mt-5">
-              <nuxt-link to="/" class="white--text">
-                <v-avatar size="125px">
-                  <img
-                    class="img-circle elevation-7 mb-1"
-                    src="https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/lists/1.jpg"
-                  >
-                </v-avatar>
-                <div class="headline">Hunter <span style="font-weight:bold">Liu</span></div>
-              </nuxt-link>
-              <div class="subheading text-xs-center white--text pt-1 pb-3">Lorem ipsum dolor sit amet</div>
-            </div>
-            <v-container>
-              <v-layout column justify-space-between>
-                <nuxt-link to="/about" class="white--text text-xs-center">關於我</nuxt-link>
-                <nuxt-link to="/posts" class="white--text text-xs-center">文章列表</nuxt-link>
-                <nuxt-link to="/tabs" class="white--text text-xs-center">標籤列表</nuxt-link>
-              </v-layout>
-            </v-container>
-          </div>
-          <div class="content">
-            <nuxt />
-          </div>
-        </v-layout>
-      </v-container>
-    </v-content>
-    <v-footer class="black-lighten-1" app>
-      <v-layout>
-        <v-flex xs12>
-          <div class="white--text ml-3">
-            © 2018. All rights reserved.
-          </div>
-        </v-flex>
-      </v-layout>
-    </v-footer>
-  </v-app>
+<template lang="pug">
+  v-app(dark)
+    v-content.default-layout
+      v-layout.default-nav.primary(row wrap align-content-center)
+        v-container.text-xs-center
+          nuxt-link.white--text(to="/")
+            v-avatar(size="125px")
+              img.img-circle.elevation-7.mb-1(src="https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/lists/1.jpg")
+            .headline Hunter Liu
+          .subheading.text-xs-center.white-text.pt-1.pb-3 Lorem ipsum dolor sit amet
+        v-container
+          v-layout(column)
+            nuxt-link.white--text.text-xs-center(to="/about") 關於我
+            nuxt-link.white--text.text-xs-center(to="/posts") 文章列表
+            nuxt-link.white--text.text-xs-center(to="/tabs") 標籤列表
+      v-layout.default-content
+        nuxt
+    v-footer.black-lighten-1.default-footer(app)
+      v-layout
+        v-flex(xs12)
+          .white--text.ml-3 © 2018. All rights reserved.
 </template>
 
-<script>
-  export default {
-
-  }
-</script>
-
-<style lang="stylus">
+<style lang="stylus" scoped>
 a
   &:link,
   &:visited
-    text-decoration: none
+    text-decoration none
   &:active,
   &:hover
-    text-decoration: underline
-.nav
-  width: 200px
-  position: fixed
-.content
-  padding-left: 200px
+    text-decoration underline
+.default-nav
+  width    250px
+  padding  20px
+  position fixed
+  height   100%
+.default-layout
+  padding 0
+.default-content
+  padding-left 250px
+.footer
+  z-index 2
 @media only screen and (max-width: 960px)
-  .layout
-    flex-direction: column
-  .nav
-    width: 100%
-    position: relative
-  .content
-    padding-left: 0px
+  .default-layout
+    flex-direction column
+  .default-nav
+    width    100%
+    position relative
+  .default-content
+    padding-left 0px
 </style>
