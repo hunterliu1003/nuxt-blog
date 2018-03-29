@@ -1,100 +1,72 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      v-model="drawer"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-tile
-          router
-          :to="item.to"
-          :key="i"
-          v-for="(item, i) in items"
-          exact
-        >
-          <v-list-tile-action>
-            <v-icon v-html="item.icon"></v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title v-text="item.title"></v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-toolbar fixed app :clipped-left="clipped">
-      <v-toolbar-side-icon @click="drawer = !drawer"></v-toolbar-side-icon>
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>web</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>remove</v-icon>
-      </v-btn>
-      <v-toolbar-title v-text="title"></v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>menu</v-icon>
-      </v-btn>
-    </v-toolbar>
     <v-content>
-      <v-container>
-        <nuxt />
+      <v-container fluid>
+        <v-layout row wrap class="layout">
+          <div class="nav">
+            <div class="text-xs-center mt-5">
+              <nuxt-link to="/" class="white--text">
+                <v-avatar size="125px">
+                  <img
+                    class="img-circle elevation-7 mb-1"
+                    src="https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/lists/1.jpg"
+                  >
+                </v-avatar>
+                <div class="headline">Hunter <span style="font-weight:bold">Liu</span></div>
+              </nuxt-link>
+              <div class="subheading text-xs-center white--text pt-1 pb-3">Lorem ipsum dolor sit amet</div>
+            </div>
+            <v-container>
+              <v-layout column justify-space-between>
+                <nuxt-link to="/about" class="white--text text-xs-center">關於我</nuxt-link>
+                <nuxt-link to="/posts" class="white--text text-xs-center">文章列表</nuxt-link>
+                <nuxt-link to="/tabs" class="white--text text-xs-center">標籤列表</nuxt-link>
+              </v-layout>
+            </v-container>
+          </div>
+          <div class="content">
+            <nuxt />
+          </div>
+        </v-layout>
       </v-container>
     </v-content>
-    <v-navigation-drawer
-      temporary
-      :right="right"
-      v-model="rightDrawer"
-      fixed
-    >
-      <v-list>
-        <v-list-tile @click.native="right = !right">
-          <v-list-tile-action>
-            <v-icon light>compare_arrows</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-title>Switch drawer (click me)</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer :fixed="fixed" app>
-      <span>&copy; 2017</span>
+    <v-footer class="black-lighten-1" app>
+      <v-layout>
+        <v-flex xs12>
+          <div class="white--text ml-3">
+            © 2018. All rights reserved.
+          </div>
+        </v-flex>
+      </v-layout>
     </v-footer>
   </v-app>
 </template>
 
 <script>
   export default {
-    data() {
-      return {
-        clipped: false,
-        drawer: true,
-        fixed: false,
-        items: [
-          { icon: 'apps', title: 'Welcome', to: '/' },
-          { icon: 'bubble_chart', title: 'Inspire', to: '/inspire' }
-        ],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Vuetify.js'
-      }
-    }
+
   }
 </script>
+
+<style lang="stylus">
+a
+  &:link,
+  &:visited
+    text-decoration: none
+  &:active,
+  &:hover
+    text-decoration: underline
+.nav
+  width: 200px
+  position: fixed
+.content
+  padding-left: 200px
+@media only screen and (max-width: 960px)
+  .layout
+    flex-direction: column
+  .nav
+    width: 100%
+    position: relative
+  .content
+    padding-left: 0px
+</style>
