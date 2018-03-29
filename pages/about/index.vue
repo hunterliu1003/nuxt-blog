@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-container
+  v-container(fluid)
     p About me !
     p 123
     p 123
