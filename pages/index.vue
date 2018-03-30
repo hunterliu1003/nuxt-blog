@@ -2,32 +2,14 @@
   v-container
     v-layout.intro(tag="section")
       h1.display-1 Get the latest tech news!
-    v-layout.feateured-posts(tag="section" row wrap)
-      PostPreview(
-        id="123"
-        title="Unlimited music now"
-        lastUpdateTime="26 Mar 2018"
-        previewText="Listen to your favorite artists and albums whenever and wherever, online and offline."
-        :tags="tags"
-      )
-
+    PostList
 </template>
 
 <script>
-import PostPreview from '@/components/Posts/PostPreview'
+import PostList from '@/components/Posts/PostList'
 export default {
   components: {
-    PostPreview
-  },
-  data () {
-    return {
-      tags: ['tag1', 'tag2', 'tag3', 'tag4']
-    }
+    PostList
   }
 }
 </script>
-
-// <style lang="stylus" scoped>
-// a
-//   margin: 0
-// </style>
