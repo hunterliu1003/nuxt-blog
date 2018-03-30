@@ -4,7 +4,7 @@
       v-card-title(primary-title)
         div
           h1.headline {{ title }}
-          div {{ lastUpdateTime }} 26 Mar 2018
+          div {{ lastUpdateTime }}
           p {{ previewText }}
       v-card-actions
         div
