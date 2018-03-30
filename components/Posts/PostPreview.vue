@@ -8,10 +8,14 @@
           p {{ previewText }}
       v-card-actions
         div
-          v-btn(small v-for="tag in tags") {{ tag }}
+          v-btn(
+            small
+            v-for="tag in tags"
+            :key="tag"
+          ) {{ tag }}
         v-spacer
-        nuxt-link(:to="'/posts/' + 1")
-          v-btn(:to="'/posts/' + 1") 閱讀全文
+        nuxt-link(:to="postLink")
+          v-btn 閱讀全文
 </template>
 
 <script>
@@ -20,6 +24,10 @@ export default {
   props: {
     id: {
       type: String,
+      required: true
+    },
+    isAdmin: {
+      type: Boolean,
       required: true
     },
     title: {
@@ -37,6 +45,11 @@ export default {
     tags: {
       type: Array,
       required: true
+    }
+  },
+  computed: {
+    postLink () {
+      return this.isAdmin ? '/admin/' + this.id : '/posts/' + this.id
     }
   }
 }
