@@ -21,14 +21,13 @@
           .white--text.ml-3 © 2018. All rights reserved.
 </template>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
 a
   &:link,
-  &:visited
-    text-decoration none
+  &:visited,
   &:active,
   &:hover
-    text-decoration underline
+    text-decoration none
 .default-nav
   width    250px
   padding  20px
