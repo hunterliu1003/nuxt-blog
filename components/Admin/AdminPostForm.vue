@@ -11,6 +11,12 @@
         required
       )
       v-text-field(
+        label="tags"
+        v-model="editedPost.tags"
+        :rules="tagsRules"
+        required
+      )
+      v-text-field(
         label="PreviewText"
         v-model="editedPost.previewText"
         :rules="previewTextRules"
@@ -47,26 +53,31 @@ export default {
         ? { ...this.post }
         : {
             title: '',
+            tags: '',
             previewText: '',
             content: '',
+            lastUpdateTime: new Date(),
+            postTime: new Date()
           },
       valid: true,
       titleRules: [
         v => !!v || 'Title is required',
+      ],
+      tagsRules: [
+        v => !!v || 'Tags is required',
       ],
       previewTextRules: [
         v => !!v || 'PreviewText is required',
       ],
       contentRules: [
         v => !!v || 'Content is required',
-      ],
-
+      ]
     }
   },
   methods: {
     submit () {
       if (this.$refs.form.validate()) {
-        console.log('haha submit')
+        this.$emit('submit', this.editedPost)
       }
     },
     cancel () {
