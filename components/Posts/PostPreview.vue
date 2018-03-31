@@ -10,8 +10,8 @@
         div
           v-btn(
             small
-            v-for="tag in tags"
-            :key="tag"
+            v-for="(tag, index) in tags"
+            :key="index"
           ) {{ tag }}
         v-spacer
         nuxt-link(:to="postLink")
@@ -43,7 +43,7 @@ export default {
       required: true
     },
     tags: {
-      type: Array,
+      type: [Array, String],
       required: true
     }
   },
