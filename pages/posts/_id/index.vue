@@ -15,20 +15,19 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: {
-          id: '1',
-          title: 'First Post (ID: ' + context.params.id + ')',
-          lastUpdateTime: '22 Mar 2018',
-          previewText: 'first Preview Text!',
-          content: 'first Preview Text!first Preview Text!first Preview Text!first Preview Text!first Preview Text!first Preview Text!first Preview Text!',
-          tags: ['tag1', 'tag2', 'tag3', 'tag4']
+  asyncData(context) {
+    return axios.get(
+      'https://nuxt-blog-e0f9a.firebaseio.com/posts/' +
+        context.params.id +
+        '.json')
+      .then(res => {
+        return {
+          loadedPost: res.data
         }
       })
-    }, 1500)
+      .catch(e => context.error())
   }
 }
 </script>
