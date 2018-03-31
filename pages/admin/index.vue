@@ -4,7 +4,7 @@
       v-btn(@click="$router.push('/admin/new-post')") Create Post
     v-layout.intro(tag="section")
       h1.display-1 Existing Posts
-    PostList(isAdmin)
+    PostList(isAdmin :posts="loadedPosts")
 </template>
 
 
@@ -14,6 +14,11 @@ export default {
   layout: 'admin',
   components: {
     PostList
+  },
+  computed: {
+    loadedPosts () {
+      return this.$store.getters.loadedPosts
+    }
   }
 }
 </script>
