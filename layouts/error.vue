@@ -19,9 +19,9 @@ export default {
   display flex
   flex-direction column
   justify-content center
-  a
-    text-decoration none
-    color red
+a
+  text-decoration none
+  color red
 
 </style>
 

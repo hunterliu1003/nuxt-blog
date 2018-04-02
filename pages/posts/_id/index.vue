@@ -6,8 +6,8 @@
         div
           v-btn(
             small
-            v-for="tag in loadedPost.tags"
-            :key="tag"
+            v-for="(tag, index) in loadedPost.tags"
+            :key="index"
           ) {{ tag }}
         div Last updated on {{ loadedPost.lastUpdateTime }}
         div Written by Hunter Liu
@@ -19,7 +19,7 @@ import axios from 'axios'
 export default {
   asyncData(context) {
     return axios.get(
-      'https://nuxt-blog-e0f9a.firebaseio.com/posts/' +
+      process.env.baseUrl + '/posts/' +
         context.params.id +
         '.json')
       .then(res => {
