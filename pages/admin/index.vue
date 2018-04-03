@@ -14,10 +14,23 @@
 export default {
   layout: 'admin',
   middleware: ['check-auth', 'auth'],
-  computed: {
-    loadedPosts () {
-      return this.$store.getters.loadedPosts
+  asyncData(context) {
+    if (context.payload) {
+      return {
+        loadedPosts: context.payload.postData
+      }
     }
+    return context.app.$axios.$get('/posts.json')
+      .then(data => {
+        const postsArray = []
+        for (const key in data) {
+          postsArray.push({ ...data[key], id: key })
+        }
+        return {
+          loadedPosts: postsArray
+        }
+      })
+      .catch(e => context.error())
   },
   methods: {
     onLogout () {
