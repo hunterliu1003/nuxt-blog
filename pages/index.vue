@@ -9,11 +9,6 @@
 <script>
 export default {
   asyncData(context) {
-    if (context.payload) {
-      return {
-        loadedPosts: context.payload.postData
-      }
-    }
     return context.app.$axios.$get('/posts.json')
       .then(data => {
         const postsArray = []

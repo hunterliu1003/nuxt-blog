@@ -113,18 +113,6 @@ module.exports = {
           for (const key in res.data) {
             postsArray.push({ ...res.data[key], id: key })
           }
-          routes.push({
-            route: '/',
-            payload: {postsData: postsArray}
-          })
-          routes.push({
-            route: '/posts',
-            payload: {postsData: postsArray}
-          })
-          routes.push({
-            route: '/admin',
-            payload: {postsData: postsArray}
-          })
           return routes
         })
     }
