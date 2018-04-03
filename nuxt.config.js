@@ -30,7 +30,7 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    // '~/stylus/reset.styl',
+    // '~assets/stylus/reset.styl',
     'vuetify/src/stylus/main.styl'
   ],
 
@@ -47,7 +47,6 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios'
   ],
 
@@ -56,6 +55,8 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseURL: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com',
+    credentials: false
   },
 
   /*
