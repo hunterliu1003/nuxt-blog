@@ -1,6 +1,13 @@
 const pkg = require('./package')
+const axios = require('axios')
 
 const nodeExternals = require('webpack-node-externals')
+
+const routerBase = process.env.DEPLOY_ENV === 'GH_PAGES' ? {
+  router: {
+    base: '/nuxt-blog/'
+  }
+} : {}
 
 module.exports = {
   mode: 'universal',
@@ -86,6 +93,24 @@ module.exports = {
     }
   },
   env: {
-    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com'
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com',
+    fbAPIKey: 'AIzaSyCCy2wRcWuSyZuc_49UUnmsiSkf9kjw1jA'
+  },
+  ...routerBase,
+  generate: {
+    dir: (process.env.DEPLOY_ENV === 'GH_PAGES') ? 'nuxt-blog' : 'dist',
+    routes: function () {
+      return axios.get('https://nuxt-blog-e0f9a.firebaseio.com/posts.json')
+        .then(res => {
+          const routes = []
+          for (const key in res.data) {
+            routes.push({
+              route: '/posts/' + key,
+              payload: {postData: res.data[key]}
+            })
+          }
+          return routes
+        })
+    }
   }
 }
