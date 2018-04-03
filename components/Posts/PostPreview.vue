@@ -35,7 +35,7 @@ export default {
       required: true
     },
     lastUpdateTime: {
-      type: String,
+      type: Number,
       required: true
     },
     previewText: {

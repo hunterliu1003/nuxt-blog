@@ -56,8 +56,8 @@ export default {
             tags: '',
             previewText: '',
             content: '',
-            lastUpdateTime: new Date(),
-            postTime: new Date()
+            lastUpdateTime: Date.now(),
+            postTime: Date.now()
           },
       valid: true,
       titleRules: [
