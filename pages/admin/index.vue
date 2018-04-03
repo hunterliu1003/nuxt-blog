@@ -9,12 +9,8 @@
 
 
 <script>
-import PostList from '@/components/Posts/PostList'
 export default {
   layout: 'admin',
-  components: {
-    PostList
-  },
   computed: {
     loadedPosts () {
       return this.$store.getters.loadedPosts
