@@ -11,7 +11,8 @@
         v-model="password"
         required
       )
-      v-btn(@click="submit") submit
+      v-btn(@click="onSubmit") {{ isLogin ? 'Login' : 'Sign Up' }}
+      v-btn(@click="isLogin = !isLogin") Switch to {{ isLogin ? 'Signup' : 'Login' }}
 </template>
 
 <script>
@@ -19,13 +20,21 @@ export default {
   layout: 'admin',
   data () {
     return {
+      isLogin: true,
       email: '',
-      password: ''
+      password: '',
     }
   },
   methods: {
-    submit () {
-      console.log('login')
+    onSubmit () {
+      this.$store.dispatch('authenticateUser', {
+        isLogin: this.isLogin,
+        email: this.email,
+        password: this.password
+      })
+      .then(() => {
+        this.$router.push('/admin')
+      })
     }
   }
 }
