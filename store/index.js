@@ -4,7 +4,6 @@ import Cookie from 'js-cookie'
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      loadedPosts: [],
       token: null
     },
     mutations: {
@@ -28,16 +27,6 @@ const createStore = () => {
       }
     },
     actions: {
-      nuxtServerInit(vuexContext, context) {
-        return context.app.$axios.$get('/posts.json')
-          .then(data => {
-            const postsArray = []
-            for (const key in data) {
-              postsArray.push({ ...data[key], id: key })
-            }
-            vuexContext.commit('setPosts', postsArray)
-          })
-      },
       addPost(vuexContext, post) {
         return this.$axios.$post('/posts.json?auth=' + vuexContext.state.token, post)
           .then(data => {
@@ -125,9 +114,6 @@ const createStore = () => {
       }
     },
     getters: {
-      loadedPosts(state) {
-        return state.loadedPosts
-      },
       isAuthenticated(state) {
         return state.token != null
       }
