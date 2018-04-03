@@ -9,7 +9,7 @@
             v-for="(tag, index) in loadedPost.tags"
             :key="index"
           ) {{ tag }}
-        div Last updated on {{ loadedPost.lastUpdateTime }}
+        div Last updated on {{ loadedPost.lastUpdateTime | date }}
         div Written by Hunter Liu
         p {{ loadedPost.content }}
 </template>
