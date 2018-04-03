@@ -38,7 +38,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/vuetify'
+    '@/plugins/core-components.js',
+    '@/plugins/vuetify',
+    '~/plugins/filters/date.js'
   ],
 
   /*
