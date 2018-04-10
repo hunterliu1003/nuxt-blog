@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-layout.feateured-posts(tag="section" row wrap)
+  v-layout.feateured-posts(tag="section" row wrap mt-5)
     PostPreview(
       v-for="post in posts"
       :key="post.id"
