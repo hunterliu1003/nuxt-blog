@@ -16,6 +16,14 @@
 
 <script>
 export default {
+  head () {
+    return {
+      title: this.loadedPost.title + ' | Hunter Liu',
+      meta: [
+        { hid: 'description', name: 'description', content: this.loadedPost.previewText }
+      ]
+    }
+  },
   asyncData(context) {
     if (context.payload) {
       return {

@@ -1,6 +1,6 @@
 # nuxt-blog
 
-> My perfect Nuxt.js project
+> My Nuxt.js blog
 
 ## Build Setup
 
@@ -17,6 +17,10 @@ $ yarn start
 
 # generate static project
 $ yarn run generate
+
+# generate static github pages
+$ yarn run generate:github
+# add .nojekyll empty file to root
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).

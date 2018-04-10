@@ -13,6 +13,7 @@
       )
       v-btn(@click="onSubmit") {{ isLogin ? 'Login' : 'Sign Up' }}
       v-btn(@click="isLogin = !isLogin") Switch to {{ isLogin ? 'Signup' : 'Login' }}
+      v-btn(@click="logout") logout
 </template>
 
 <script>
@@ -35,6 +36,9 @@ export default {
       .then(() => {
         this.$router.push('/admin')
       })
+    },
+    logout () {
+      this.$store.dispatch('logout')
     }
   }
 }

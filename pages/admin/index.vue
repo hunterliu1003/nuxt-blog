@@ -6,24 +6,22 @@
       v-btn(@click="onLogout") logout
     v-layout.intro(tag="section")
       h1.display-1 Existing Posts
-    PostList(isAdmin :posts="loadedPosts")
+    PostList(isAdmin :posts="$store.getters.posts")
 </template>
-
 
 <script>
 export default {
   layout: 'admin',
   middleware: ['check-auth', 'auth'],
-  asyncData(context) {
+  fetch (context) {
+    if (context.store.state.loadedPosts.length !== 0) return
     return context.app.$axios.$get('/posts.json')
       .then(data => {
         const postsArray = []
         for (const key in data) {
           postsArray.push({ ...data[key], id: key })
         }
-        return {
-          loadedPosts: postsArray
-        }
+        context.store.dispatch('setPosts', postsArray)
       })
       .catch(e => context.error())
   },
@@ -35,7 +33,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-
-</style>
