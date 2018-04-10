@@ -1,21 +1,22 @@
 <template lang="pug">
-  v-flex(tag="article" xs12 mt-3)
+  v-flex(tag="article" xs12 md10 lg8 offset-md1 mt-3)
     v-card.white--text(color="cyan darken-2")
       v-card-title(primary-title)
         div
-          h1.headline {{ title }}
-          div {{ lastUpdateTime | date }}
-          p {{ previewText }}
+          h1.headline
+            nuxt-link(:to="postLink" class="white--text") {{ title }}
+          div.mt-2 {{ lastUpdateTime | date }}
+          p
+            nuxt-link(:to="postLink" class="white--text") {{ title }}{{ previewText }}
       v-card-actions
         div
-          v-btn(
+          nuxt-link(
+            :to="postLink"
+            class="white--text"
             small
             v-for="(tag, index) in tags"
             :key="index"
           ) {{ tag }}
-        v-spacer
-        nuxt-link(:to="postLink")
-          v-btn 閱讀全文
 </template>
 
 <script>
