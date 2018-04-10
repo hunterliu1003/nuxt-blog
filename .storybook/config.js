@@ -13,7 +13,7 @@ Vue.directive('sortable', {
   }
 })
 
-import "vuetify/dist/vuetify.css"
+import 'vuetify/dist/vuetify.css'
 // require('!!style-loader!css-loader!stylus-loader!../stylus/main.styl');
 
 setOptions({
