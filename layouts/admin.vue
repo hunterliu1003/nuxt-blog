@@ -20,5 +20,11 @@ export default {
 
 
 <style lang="stylus">
-
+a
+  &:link,
+  &:visited,
+  &:active
+    text-decoration none
+  &:hover
+    text-decoration underline
 </style>

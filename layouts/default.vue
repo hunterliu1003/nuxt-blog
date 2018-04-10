@@ -25,9 +25,10 @@
 a
   &:link,
   &:visited,
-  &:active,
-  &:hover
+  &:active
     text-decoration none
+  &:hover
+    text-decoration underline
 .default-nav
   width    250px
   padding  20px
@@ -39,7 +40,7 @@ a
   padding-left 250px
 .footer
   z-index 2
-@media only screen and (max-width: 960px)
+@media only screen and (max-width: 768px)
   .default-layout
     flex-direction column
   .default-nav
