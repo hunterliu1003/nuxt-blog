@@ -2,7 +2,7 @@
   v-container
     v-layout.intro(tag="section")
       h1.display-1 Get the latest tech news!
-    PostList(:posts="$store.getters.posts")
+    PostsPostList(:posts="$store.getters.posts")
 </template>
 
 <script>

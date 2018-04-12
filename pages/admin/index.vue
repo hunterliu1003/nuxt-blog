@@ -6,7 +6,7 @@
       v-btn(@click="onLogout") logout
     v-layout.intro(tag="section")
       h1.display-1 Existing Posts
-    PostList(isAdmin :posts="$store.getters.posts")
+    PostsPostList(isAdmin :posts="$store.getters.posts")
 </template>
 
 <script>
