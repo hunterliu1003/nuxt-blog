@@ -5,7 +5,7 @@
 
 <script>
 import axios from 'axios'
-import AdminPostForm from '@/components/Admin/AdminPostForm'
+import AdminPostForm from '@/components/AdminPostForm'
 export default {
   layout: 'admin',
   middleware: ['check-auth', 'auth'],
