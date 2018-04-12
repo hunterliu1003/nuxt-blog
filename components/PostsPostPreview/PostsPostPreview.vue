@@ -10,13 +10,7 @@
             nuxt-link(:to="postLink" class="white--text") {{ title }}{{ previewText }}
       v-card-actions
         div
-          nuxt-link(
-            :to="postLink"
-            class="white--text"
-            small
-            v-for="(tag, index) in tags"
-            :key="index"
-          ) {{ tag }}
+          TheInputTags(v-model="tags" disabled)
 </template>
 
 <script>
