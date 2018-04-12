@@ -1,5 +1,7 @@
 import Vue from 'vue'
 
-import PostList from '@/components/PostsPostList'
+import PostsPostList from '@/components/PostsPostList'
+import TheInputTags from '@/components/TheInputTags'
 
-Vue.component('PostList', PostList)
+Vue.component('PostsPostList', PostsPostList)
+Vue.component('TheInputTags', TheInputTags)
