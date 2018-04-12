@@ -9,13 +9,17 @@
         v-model="editedPost.title"
         :rules="titleRules"
         required
+        autofocus
       )
-      v-text-field(
-        label="tags"
-        v-model="editedPost.tags"
-        :rules="tagsRules"
-        required
-      )
+      p tags
+      TheInputTags(v-model="editedPost.tags")
+
+      //- v-text-field(
+      //-   label="tags"
+      //-   v-model="editedPost.tags"
+      //-   :rules="tagsRules"
+      //-   required
+      //- )
       v-text-field(
         label="PreviewText"
         v-model="editedPost.previewText"
@@ -53,7 +57,7 @@ export default {
         ? { ...this.post }
         : {
             title: '',
-            tags: '',
+            tags: [],
             previewText: '',
             content: '',
             lastUpdateTime: Date.now(),
@@ -63,9 +67,9 @@ export default {
       titleRules: [
         v => !!v || 'Title is required',
       ],
-      tagsRules: [
-        v => !!v || 'Tags is required',
-      ],
+      // tagsRules: [
+      //   v => !!v || 'Tags is required',
+      // ],
       previewTextRules: [
         v => !!v || 'PreviewText is required',
       ],
