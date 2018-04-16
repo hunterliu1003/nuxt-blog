@@ -13,6 +13,7 @@
     }]
   ],
   "plugins": [
-    "transform-object-rest-spread"
+    "transform-object-rest-spread",
+    "transform-pug-html"
   ]
 }
