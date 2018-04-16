@@ -14,12 +14,6 @@
       p tags
       TheInputTags(v-model="editedPost.tags")
 
-      //- v-text-field(
-      //-   label="tags"
-      //-   v-model="editedPost.tags"
-      //-   :rules="tagsRules"
-      //-   required
-      //- )
       v-text-field(
         label="PreviewText"
         v-model="editedPost.previewText"
@@ -27,13 +21,17 @@
         multi-line
         required
       )
-      v-text-field(
+      v-text-field.post-content(
         label="Content"
         v-model="editedPost.content"
         :rules="contentRules"
         multi-line
+        rows="15"
         required
       )
+
+      PostsPostMarkdown(:markdown-text="editedPost.content")
+
       v-btn(
         @click="submit"
         :disabled="!valid"
@@ -67,9 +65,6 @@ export default {
       titleRules: [
         v => !!v || 'Title is required',
       ],
-      // tagsRules: [
-      //   v => !!v || 'Tags is required',
-      // ],
       previewTextRules: [
         v => !!v || 'PreviewText is required',
       ],
@@ -78,15 +73,6 @@ export default {
       ]
     }
   },
-  // created () {
-  //   if (process.browser) {
-  //     window.onbeforeunload = function(e) {
-  //       var dialogText = 'Dialog text here';
-  //       e.returnValue = dialogText;
-  //       return dialogText;
-  //     };
-  //   }
-  // },
   methods: {
     submit () {
       if (this.$refs.form.validate()) {
@@ -99,3 +85,8 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.post-content
+  // max-height 500px
+</style>
