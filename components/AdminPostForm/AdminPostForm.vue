@@ -85,8 +85,3 @@ export default {
   }
 }
 </script>
-
-<style lang="stylus" scoped>
-.post-content
-  // max-height 500px
-</style>

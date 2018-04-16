@@ -1,7 +1,9 @@
 <template lang="pug">
   v-container
-    h1.heading.mb-3.text-xs-center New Post
-    AdminPostForm(@submit="onSubmitted")
+    v-layout(column)
+      v-flex(xs12 sm10 offset-sm1 lg8 offset-lg2)
+        h1.heading.mb-3.text-xs-center New Post
+        AdminPostForm(@submit="onSubmitted")
 </template>
 
 <script>

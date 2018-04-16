@@ -1,12 +1,14 @@
 <template lang="pug">
   v-container
-    v-layout.intro(tag="section")
-      v-btn(@click="$router.push('/admin/new-post')") Create Post
-      v-btn(@click="$router.push('/')") home
-      v-btn(@click="onLogout") logout
-    v-layout.intro(tag="section")
-      h1.display-1 Existing Posts
-    PostsPostList(isAdmin :posts="$store.getters.posts")
+    v-layout.intro
+      v-flex()
+        v-btn(@click="$router.push('/admin/new-post')") Create Post
+        v-btn(@click="$router.push('/')") home
+        v-btn(@click="onLogout") logout
+    v-layout.intro(tag="section" column)
+      v-flex()
+        h1.display-1 Existing Posts
+      PostsPostList(isAdmin :posts="$store.getters.posts")
 </template>
 
 <script>

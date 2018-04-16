@@ -1,5 +1,5 @@
 <template lang="pug">
-  .posts-post-markdown
+  article.posts-post-markdown
     h1 asdf
     div(v-html="contentHtml")
 </template>
@@ -56,7 +56,8 @@ export default {
 
 <style lang="stylus" scoped>
   .posts-post-markdown
-    border: 1px solid red
-  >>> h1
-    color red
+    // border: 1px solid red
+    // padding 0 0 0 20px
+  >>> a
+    color #fff
 </style>

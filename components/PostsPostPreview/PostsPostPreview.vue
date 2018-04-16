@@ -1,16 +1,14 @@
 <template lang="pug">
-  v-flex(tag="article" xs12 md10 lg8 offset-md1 mt-3)
-    v-card.white--text(color="cyan darken-2")
-      v-card-title(primary-title)
-        div
-          h1.headline
-            nuxt-link(:to="postLink" class="white--text") {{ title }}
-          div.mt-2 {{ lastUpdateTime | date }}
-          p
-            nuxt-link(:to="postLink" class="white--text") {{ title }}{{ previewText }}
-      v-card-actions
-        div
-          TheInputTags(v-model="tags" disabled)
+  v-card.white--text.mt-3(tag="article" color="cyan darken-2")
+    v-card-title
+      div
+        h1.headline
+          nuxt-link(:to="postLink" class="white--text") {{ title }}
+        div.mt-2 {{ lastUpdateTime | date }}
+        p
+          nuxt-link(:to="postLink" class="white--text") {{ title }}{{ previewText }}
+    v-card-actions
+      TheInputTags(v-model="tags" disabled)
 </template>
 
 <script>

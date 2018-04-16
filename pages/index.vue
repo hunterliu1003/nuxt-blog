@@ -1,9 +1,10 @@
 <template lang="pug">
-  v-container
-    v-layout.intro(tag="section")
-      h1.display-1 Get the latest tech news!
-      v-btn(@click="$router.push('/admin')") admin
-    PostsPostList(:posts="$store.getters.posts")
+  v-container(fluid)
+    v-layout.intro(tag="section" column)
+      v-flex(row)
+        h1.display-1 Get the latest tech news!
+        v-btn(@click="$router.push('/admin')") admin
+      PostsPostList(:posts="$store.getters.posts")
 </template>
 
 <script>

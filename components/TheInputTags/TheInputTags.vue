@@ -60,6 +60,7 @@ export default {
 <style lang="stylus" scoped>
   .the-tags
     display flex
+    flex-wrap wrap
     padding 6px
     margin 0
     border 1px solid #ccc
@@ -77,7 +78,11 @@ export default {
 
     &.disabled
       padding 5px 12px
+      margin 8px 8px 0 0
       cursor pointer
+    &:hover
+      background-color #333
+      transition: all 1000ms linear;
   .the-tag-input
     padding 5px 0
     margin 0

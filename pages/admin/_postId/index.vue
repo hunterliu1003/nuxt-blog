@@ -1,7 +1,9 @@
 <template lang="pug">
   v-container
-    h1.heading.mb-3.text-xs-center Edit Post
-    AdminPostForm.mt-3(:post="loadedPost" @submit="onSubmitted")
+    v-layout(column)
+      v-flex(xs12 sm10 offset-sm1 lg8 offset-lg2)
+        h1.heading.mb-3.text-xs-center Edit Post
+        AdminPostForm.mt-3(:post="loadedPost" @submit="onSubmitted")
 </template>
 
 <script>

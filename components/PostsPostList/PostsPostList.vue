@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-layout.feateured-posts(tag="section" row wrap mt-5)
+  v-flex.post-list(row wrap)
     PostsPostPreview(
       v-for="post in posts"
       :key="post.id"
@@ -30,3 +30,9 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.post-list
+  width 100%
+  max-width 1264px
+</style>
