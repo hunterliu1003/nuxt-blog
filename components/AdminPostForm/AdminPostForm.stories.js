@@ -18,9 +18,11 @@ storiesOf('AdminPostForm', module)
         action('AdminPostForm')();
       },
     },
-    template:`
-      <v-app dark>
-        <AdminPostForm />
-      </v-app>
-    `
+    template: (
+      pug
+      `v-app(dark)
+        v-container(fluid)
+          AdminPostForm`
+    )
+
   })));
