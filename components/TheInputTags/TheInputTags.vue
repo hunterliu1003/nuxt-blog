@@ -75,14 +75,14 @@ export default {
     border-radius 2px
     background-color #444
     color #eaeaea
-
     &.disabled
       padding 5px 12px
       margin 8px 8px 0 0
       cursor pointer
-    &:hover
-      background-color #333
-      transition: all 1000ms linear;
+      transition all 300ms ease
+      &:hover
+        background-color #303030
+
   .the-tag-input
     padding 5px 0
     margin 0
@@ -94,9 +94,9 @@ export default {
     right 4px
     cursor pointer
     color #eaeaea
-    opacity: .7;
+    opacity .7
     &:hover
-      opacity: 1;
+      opacity 1
   input[type="text"]
     border 0
     margin 0

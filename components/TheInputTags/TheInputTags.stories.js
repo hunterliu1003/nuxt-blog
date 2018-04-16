@@ -11,7 +11,7 @@ import TheInputTags from './';
 Vue.component('TheInputTags', TheInputTags);
 
 storiesOf('TheInputTags', module)
-  .addDecorator(centered)
+  // .addDecorator(centered)
   .add('TheInputTags disabled', withReadme(README, () => ({
     data () {
       return {
@@ -24,8 +24,8 @@ storiesOf('TheInputTags', module)
       },
     },
     template:`
-      <v-app>
-        <v-container>
+      <v-app dark>
+        <v-container fluid>
           <TheInputTags v-model="tags" disabled />
         </v-container>
       </v-app>
@@ -43,8 +43,8 @@ storiesOf('TheInputTags', module)
       },
     },
     template:`
-      <v-app>
-        <v-container>
+      <v-app dark>
+        <v-container fluid>
           <TheInputTags v-model="tags" />
         </v-container>
       </v-app>

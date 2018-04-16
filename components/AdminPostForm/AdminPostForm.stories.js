@@ -22,7 +22,7 @@ storiesOf('AdminPostForm', module)
       pug
       `v-app(dark)
         v-container(fluid)
-          AdminPostForm`
+          AdminPostForm `
     )
 
   })));
