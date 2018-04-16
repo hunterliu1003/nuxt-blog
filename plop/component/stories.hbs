@@ -11,16 +11,17 @@ import {{ properCase name }} from './';
 Vue.component('{{ properCase name }}', {{ properCase name }});
 
 storiesOf('{{ properCase name }}', module)
-  .addDecorator(centered)
+  //.addDecorator(centered)
   .add('{{ properCase name }}', withReadme(README, () => ({
     methods: {
       log() {
         action('{{ properCase name }}')();
       },
     },
-    template:`
-      <v-app>
-        <{{ properCase name }} />
-      </v-app>
-    `
+    template: (
+      pug
+      `v-app(dark)
+        v-container(fluid)
+          {{ properCase name }} `
+    )
   })));
