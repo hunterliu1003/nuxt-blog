@@ -23,7 +23,9 @@
     "express": "^4.15.3",
     "firebase": "^4.12.1",
     "js-cookie": "^2.2.0",
+    "lodash.debounce": "^4.0.8",
     "markdown-it": "^8.4.1",
+    "markdown-it-attrs": "^1.2.1",
     "nuxt": "^1.0.0",
     "vuetify": "^0.17.3"
   },
