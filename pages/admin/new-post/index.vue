@@ -1,5 +1,6 @@
 <template lang="pug">
   v-container
+    h1.heading.mb-3.text-xs-center New Post
     AdminPostForm(@submit="onSubmitted")
 </template>
 

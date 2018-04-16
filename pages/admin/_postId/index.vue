@@ -1,6 +1,7 @@
 <template lang="pug">
   v-container
-    AdminPostForm(:post="loadedPost" @submit="onSubmitted")
+    h1.heading.mb-3.text-xs-center Edit Post
+    AdminPostForm.mt-3(:post="loadedPost" @submit="onSubmitted")
 </template>
 
 <script>
