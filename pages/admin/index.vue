@@ -1,13 +1,11 @@
 <template lang="pug">
   v-container
-    v-layout.intro
-      v-flex()
-        v-btn(@click="$router.push('/admin/new-post')") Create Post
-        v-btn(@click="$router.push('/')") home
-        v-btn(@click="onLogout") logout
-    v-layout.intro(tag="section" column)
-      v-flex()
-        h1.display-1 Existing Posts
+    v-layout.intro(justify-center)
+      v-btn(@click="$router.push('/admin/new-post')") Create Post
+      v-btn(@click="$router.push('/')") home
+      v-btn(@click="onLogout") logout
+    v-layout.intro(tag="section" column align-center mt-3)
+      h1.display-1 Existing Posts
       PostsPostList(isAdmin :posts="$store.getters.posts")
 </template>
 
@@ -15,17 +13,8 @@
 export default {
   layout: 'admin',
   middleware: ['check-auth', 'auth'],
-  fetch (context) {
-    if (context.store.state.loadedPosts.length !== 0) return
-    return context.app.$axios.$get('/posts.json')
-      .then(data => {
-        const postsArray = []
-        for (const key in data) {
-          postsArray.push({ ...data[key], id: key })
-        }
-        context.store.dispatch('setPosts', postsArray)
-      })
-      .catch(e => context.error())
+  async fetch ({ store, params }) {
+    await store.dispatch('setPosts')
   },
   methods: {
     onLogout () {

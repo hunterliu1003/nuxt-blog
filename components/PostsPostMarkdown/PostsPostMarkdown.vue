@@ -1,6 +1,6 @@
 <template lang="pug">
-  article.posts-post-markdown
-    h1 asdf
+  //- v-layout.posts-post-markdown(tag="article")
+  .posts-post-markdown
     div(v-html="contentHtml")
 </template>
 
@@ -55,9 +55,18 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .posts-post-markdown
+.posts-post-markdown
+  width 100%
     // border: 1px solid red
     // padding 0 0 0 20px
-  >>> a
-    color #fff
+>>> a
+  color #fff
+>>> h1,
+>>> h2,
+>>> h3,
+>>> h4,
+>>> h5,
+>>> h6,
+>>> p
+  word-wrap break-word
 </style>

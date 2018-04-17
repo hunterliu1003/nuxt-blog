@@ -25,7 +25,7 @@ export default {
     },
     posts: {
       type: Array,
-      required: true
+      required: false
     }
   }
 }

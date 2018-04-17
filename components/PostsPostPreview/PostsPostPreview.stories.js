@@ -11,7 +11,7 @@ import PostsPostPreview from './';
 Vue.component('PostsPostPreview', PostsPostPreview);
 
 storiesOf('PostsPostPreview', module)
-  .addDecorator(centered)
+  // .addDecorator(centered)
   .add('PostsPostPreview', withReadme(README, () => ({
     methods: {
       log() {

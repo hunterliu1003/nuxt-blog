@@ -1,12 +1,12 @@
 <template lang="pug">
   v-card.white--text.mt-3(tag="article" color="cyan darken-2")
     v-card-title
-      div
-        h1.headline
+      div.post-preview
+        h1.display-1
           nuxt-link(:to="postLink" class="white--text") {{ title }}
-        div.mt-2 {{ lastUpdateTime | date }}
-        p
-          nuxt-link(:to="postLink" class="white--text") {{ title }}{{ previewText }}
+        p.caption {{ lastUpdateTime | date }}
+        nuxt-link(:to="postLink" class="white--text")
+          PostsPostMarkdown(:markdownText="previewText")
     v-card-actions
       TheInputTags(v-model="tags" disabled)
 </template>
@@ -49,6 +49,8 @@ export default {
 
 
 <style lang="stylus" scoped>
+.post-preview
+  width 100%
 a
   margin: 0
 </style>

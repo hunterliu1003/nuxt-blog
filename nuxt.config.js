@@ -41,6 +41,7 @@ module.exports = {
   */
   css: [
     // '~assets/stylus/reset.styl',
+    '~assets/stylus/base.styl',
     'vuetify/src/stylus/main.styl'
   ],
 
@@ -50,7 +51,7 @@ module.exports = {
   plugins: [
     '@/plugins/core-components.js',
     '@/plugins/vuetify',
-    '~/plugins/filters/date.js'
+    '@/plugins/filters/date.js'
   ],
 
   /*
@@ -95,10 +96,9 @@ module.exports = {
       }
     }
   },
-  env: {
-    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com',
-    fbAPIKey: 'AIzaSyCCy2wRcWuSyZuc_49UUnmsiSkf9kjw1jA'
-  },
+  // env: {
+  //   baseUrl: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com'
+  // },
   ...routerBase,
   generate: {
     dir: (process.env.DEPLOY_ENV === 'GH_PAGES') ? 'nuxt-blog' : 'dist',

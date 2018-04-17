@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     onSubmitted (editedPost) {
+      // 最近更新日期
       this.$store.dispatch('editPost', editedPost)
         .then(() => {
           this.$router.push('/admin')

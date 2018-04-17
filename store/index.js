@@ -1,21 +1,14 @@
 import Vuex from 'vuex'
 import * as firebase from 'firebase'
+import config from '@/firebase.config.js'
 
-const config = {
-  apiKey: "AIzaSyCCy2wRcWuSyZuc_49UUnmsiSkf9kjw1jA",
-  authDomain: "nuxt-blog-e0f9a.firebaseapp.com",
-  databaseURL: "https://nuxt-blog-e0f9a.firebaseio.com",
-  projectId: "nuxt-blog-e0f9a",
-  storageBucket: "nuxt-blog-e0f9a.appspot.com",
-  messagingSenderId: "179654731046"
-}
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
 }
 const createStore = () => {
   return new Vuex.Store({
     state: {
-      token: null,
+      // token: null,
       uid: null,
       loadedPosts: []
 
@@ -31,14 +24,14 @@ const createStore = () => {
         const postIndex = state.loadedPosts.findIndex(
           post => post.id === editedPost.id
         )
-        state.loadedPosts[postIndex] = editedPost
+        state.loadedPosts.splice(postIndex, 1, editedPost)
       },
-      setToken(state, token) {
-        state.token = token
-      },
-      clearToken(state) {
-        state.token = null
-      },
+      // setToken(state, token) {
+      //   state.token = token
+      // },
+      // clearToken(state) {
+      //   state.token = null
+      // },
       setUid(state, uid) {
         state.uid = uid
       },
@@ -69,8 +62,17 @@ const createStore = () => {
           })
           .catch(e => console.log(e))
       },
-      setPosts ({ commit }, posts) {
-        commit('setPosts', posts)
+      async setPosts ({ commit, state }) {
+        if (state.loadedPosts.length !== 0) return
+        await this.$axios.$get('/posts.json')
+          .then(data => {
+            const postsArray = []
+            for (const key in data) {
+              postsArray.push({ ...data[key], id: key })
+            }
+            commit('setPosts', postsArray)
+          })
+          .catch(e => context.error())
       },
       authenticateUser ({ commit }, authData) {
         return firebase.auth().signInWithEmailAndPassword(authData.email, authData.password)

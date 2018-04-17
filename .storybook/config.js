@@ -4,6 +4,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Vuetify from 'vuetify'
 import colors from 'vuetify/es5/util/colors'
+import 'babel-polyfill'
+import '@/plugins/filters/date'
 // import Sortable from 'vue-sortable'
 Vue.use(Vuex);
 Vue.use(Vuetify, {
@@ -17,14 +19,17 @@ Vue.use(Vuetify, {
     success: colors.green.accent3
   }
 })
-Vue.directive('sortable', {
-  inserted: function (el, binding) {
-    new Sortable(el, binding.value || {})
-  }
+// Vue.directive('sortable', {
+//   inserted: function (el, binding) {
+//     new Sortable(el, binding.value || {})
+//   }
+// })
+Vue.component('nuxt-link', {
+  template: `<a><slot></slot></a>`
 })
 
 import 'vuetify/dist/vuetify.css'
-// require('!!style-loader!css-loader!stylus-loader!../stylus/main.styl');
+import '!!style-loader!css-loader!stylus-loader!../assets/stylus/base.styl'
 
 setOptions({
   name: 'ht-storybook',

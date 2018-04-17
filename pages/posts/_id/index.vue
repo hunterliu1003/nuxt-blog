@@ -3,15 +3,10 @@
     v-layout(tag="section")
       v-flex(xs12)
         h1 {{ loadedPost.title }}
-        div
-          v-btn(
-            small
-            v-for="(tag, index) in loadedPost.tags"
-            :key="index"
-          ) {{ tag }}
-        div Last updated on {{ loadedPost.lastUpdateTime | date }}
+        div Last updated on {{ loadedPost.postTime | date }}
+        TheInputTags(v-model="loadedPost.tags" disabled)
         div Written by Hunter Liu
-        p {{ loadedPost.content }}
+        PostsPostMarkdown(:markdown-text="loadedPost.content")
 </template>
 
 <script>

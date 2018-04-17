@@ -6,10 +6,11 @@
           nuxt-link.white--text(to="/")
             v-avatar(size="125px")
               img.img-circle.elevation-7.mb-1(src="https://raw.githubusercontent.com/vuetifyjs/docs/dev/static/doc-images/lists/1.jpg")
-            .headline Hunter Liu
+            h1.headline Hunter Liu
           .subheading.text-xs-center.white-text.pt-1.pb-3 Lorem ipsum dolor sit amet
         v-container
           v-layout(column)
+            h2.d-none 關於我、文章列表和標籤列表
             nuxt-link.white--text.text-xs-center(to="/about") 關於我
             nuxt-link.white--text.text-xs-center(to="/posts") 文章列表
             nuxt-link.white--text.text-xs-center(to="/tabs") 標籤列表
@@ -22,13 +23,6 @@
 </template>
 
 <style lang="stylus">
-a
-  &:link,
-  &:visited,
-  &:active
-    text-decoration none
-  &:hover
-    text-decoration underline
 .default-nav
   width    250px
   padding  20px

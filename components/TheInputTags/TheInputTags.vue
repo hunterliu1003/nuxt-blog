@@ -4,7 +4,7 @@
       v-for="(tag, index) in value"
       :key="tag + index"
       :class="{ disabled }"
-      @click="disabled && $router.push('/')"
+      @click="to"
     )
       | {{ tag }}
       span(@click.stop="tagRemove(index)" v-if="!disabled")
@@ -39,10 +39,6 @@ export default {
       return this.value.find(tag => tag === this.tagInput)
     }
   },
-  created () {
-  },
-  mounted () {
-  },
   methods: {
     tagAdd () {
       if (this.tagInput === '') return
@@ -52,6 +48,9 @@ export default {
     },
     tagRemove (index) {
       this.value.splice(index, 1)
+    },
+    to () {
+      this.disabled && this.$router && this.$router.push('/')
     }
   }
 }

@@ -2,6 +2,11 @@
 
 > My Nuxt.js blog
 
+## Supported Browsers
+
+- IE9/IE10 not supported
+
+
 ## Build Setup
 
 ``` bash
