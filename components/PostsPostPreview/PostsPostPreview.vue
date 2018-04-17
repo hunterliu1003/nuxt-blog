@@ -16,27 +16,27 @@ export default {
   props: {
     id: {
       type: String,
-      required: true
+      required: false
     },
     isAdmin: {
       type: Boolean,
-      required: true
+      required: false
     },
     title: {
       type: String,
-      required: true
+      required: false
     },
     lastUpdateTime: {
       type: Number,
-      required: true
+      required: false
     },
     previewText: {
       type: String,
-      required: true
+      required: false
     },
     tags: {
       type: [Array, String],
-      required: true
+      required: false
     }
   },
   computed: {

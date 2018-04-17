@@ -19,7 +19,9 @@ export default {
   props: {
     markdownText: {
       type: String,
-      required: true
+      default () {
+        return '' 
+      }
     },
     delay: {
       type: Number,
