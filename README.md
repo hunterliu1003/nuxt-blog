@@ -2,10 +2,13 @@
 
 > My Nuxt.js blog
 
+[Live Demo](http://hunterliu1003.github.io/nuxt-blog/)
+
+--- on working ---
+
 ## Supported Browsers
 
 - IE9/IE10 not supported
-
 
 ## Build Setup
 
