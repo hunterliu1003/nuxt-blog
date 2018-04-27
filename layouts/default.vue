@@ -24,22 +24,24 @@
 
 <style lang="stylus">
 .default-nav
-  width    250px
-  padding  20px
+  width 250px
+  padding 20px
   position fixed
-  height   100%
+  height 100%
 .default-layout
   padding 0
 .default-content
-  padding-left 250px
+  padding-top 40px
+  padding-left 300px
 .footer
   z-index 2
 @media only screen and (max-width: 768px)
   .default-layout
     flex-direction column
   .default-nav
-    width    100%
+    width 100%
     position relative
   .default-content
-    padding-left 0px
+    padding-top 0
+    padding-left 0
 </style>
