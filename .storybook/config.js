@@ -19,7 +19,9 @@ Vue.use(Vuetify, {
     info: colors.teal.lighten1,
     warning: colors.amber,
     error: colors.deepOrange.accent4,
-    success: colors.green.accent3
+    success: colors.green.accent3,
+    'ht-post-preview': '#3B8070',
+    'ht-main-bgc': '#303030'
   }
 })
 Vue.use(MarkdownIt)
