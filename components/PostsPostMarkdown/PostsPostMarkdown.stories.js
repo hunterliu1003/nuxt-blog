@@ -1,15 +1,16 @@
 import Vue from 'vue';
 
-import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
-import centered from '@storybook/addon-centered';
-import { withReadme }  from 'storybook-readme';
-import README from './README.md';
+import { storiesOf } from '@storybook/vue'
+import { action } from '@storybook/addon-actions'
+import centered from '@storybook/addon-centered'
+import { withReadme }  from 'storybook-readme'
+import '@storybook/addon-console'
+import README from './README.md'
 import axios from 'axios'
 
-import PostsPostMarkdown from './';
+import PostsPostMarkdown from './'
 
-Vue.component('PostsPostMarkdown', PostsPostMarkdown);
+Vue.component('PostsPostMarkdown', PostsPostMarkdown)
 
 storiesOf('PostsPostMarkdown', module)
   // .addDecorator(centered)
@@ -24,7 +25,7 @@ storiesOf('PostsPostMarkdown', module)
     },
     methods: {
       log() {
-        action('PostsPostMarkdown')();
+        action('PostsPostMarkdown')()
       },
       getPost () {
         axios.get('https://nuxt-blog-e0f9a.firebaseio.com/posts.json?orderBy="postTime"&limitToLast=1')
@@ -42,4 +43,4 @@ storiesOf('PostsPostMarkdown', module)
         v-container(fluid)
           PostsPostMarkdown(:markdown-text="$md.render(mdText)") `
     )
-  })));
+  })))

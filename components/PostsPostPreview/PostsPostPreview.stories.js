@@ -1,13 +1,14 @@
 import Vue from 'vue';
 
-import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
-import centered from '@storybook/addon-centered';
-import { withReadme }  from 'storybook-readme';
-import README from './README.md';
+import { storiesOf } from '@storybook/vue'
+import { action } from '@storybook/addon-actions'
+import centered from '@storybook/addon-centered'
+import { withReadme }  from 'storybook-readme'
+import '@storybook/addon-console'
+import README from './README.md'
 import axios from 'axios'
 
-import PostsPostPreview from './';
+import PostsPostPreview from './'
 
 Vue.component('PostsPostPreview', PostsPostPreview);
 
@@ -52,4 +53,4 @@ storiesOf('PostsPostPreview', module)
             :tags="loadedPost.tags"
           ) `
     )
-  })));
+  })))

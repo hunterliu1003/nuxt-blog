@@ -1,14 +1,15 @@
-import Vue from 'vue';
+import Vue from 'vue'
 
-import { storiesOf } from '@storybook/vue';
-import { action } from '@storybook/addon-actions';
-import centered from '@storybook/addon-centered';
-import { withReadme }  from 'storybook-readme';
-import README from './README.md';
+import { storiesOf } from '@storybook/vue'
+import { action } from '@storybook/addon-actions'
+import centered from '@storybook/addon-centered'
+import { withReadme }  from 'storybook-readme'
+import '@storybook/addon-console'
+import README from './README.md'
 
-import TheInputTags from './';
+import TheInputTags from './'
 
-Vue.component('TheInputTags', TheInputTags);
+Vue.component('TheInputTags', TheInputTags)
 
 storiesOf('TheInputTags', module)
   // .addDecorator(centered)
@@ -20,7 +21,7 @@ storiesOf('TheInputTags', module)
     },
     methods: {
       log() {
-        action('TheInputTags')();
+        action('TheInputTags')()
       },
     },
     template:`
@@ -39,7 +40,7 @@ storiesOf('TheInputTags', module)
     },
     methods: {
       log() {
-        action('TheInputTags')();
+        action('TheInputTags')()
       },
     },
     template:`
@@ -49,4 +50,4 @@ storiesOf('TheInputTags', module)
         </v-container>
       </v-app>
     `
-  })));
+  })))
