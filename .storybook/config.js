@@ -38,8 +38,8 @@ import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/monokai.css'
 
 setOptions({
-  name: 'ht-storybook',
-  url: 'https://github.com/hunterliu1003/ht-storybook',
+  name: 'nuxt-blog',
+  url: 'https://github.com/hunterliu1003/nuxt-blog',
   addonPanelInRight: true
 })
 
