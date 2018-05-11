@@ -11,26 +11,33 @@
         required
         autofocus
       )
-      p tags
+      p Tags
       TheInputTags(v-model="editedPost.tags")
-
-      v-text-field(
-        label="PreviewText"
-        v-model="editedPost.previewText"
-        :rules="previewTextRules"
-        multi-line
-        required
+      p.mt-3 Preview Text
+      no-ssr
+        codemirror.mt-3(
+          v-model="editedPost.previewText"
+          :options="cmOptions"
+        )
+      p.mt-3 Preview Preview Text
+      PostsPostPreview(
+        :id="editedPost.id"
+        is-admin
+        :title="editedPost.title"
+        :lastUpdateTime="editedPost.lastUpdateTime"
+        :previewText="editedPost.previewText"
+        :tags="editedPost.tags"
       )
-      v-text-field.post-content(
-        label="Content"
-        v-model="editedPost.content"
-        :rules="contentRules"
-        multi-line
-        rows="15"
-        required
-      )
+      p.mt-3 Content
 
-      PostsPostMarkdown(:markdown-text="editedPost.content")
+      no-ssr
+        codemirror.mt-3(
+          v-model="editedPost.content"
+          :options="cmOptions"
+        )
+
+      p.mt-3 Preview Content
+      PostsPostMarkdown(:markdown-text="$md.render(editedPost.content)")
 
       v-btn(
         @click="submit"
@@ -65,12 +72,15 @@ export default {
       titleRules: [
         v => !!v || 'Title is required',
       ],
-      previewTextRules: [
-        v => !!v || 'PreviewText is required',
-      ],
-      contentRules: [
-        v => !!v || 'Content is required',
-      ]
+      cmOptions: {
+        // codemirror options
+        tabSize: 4,
+        mode: 'markdown',
+        theme: 'monokai',
+        lineNumbers: true,
+        lineWrapping: true
+        // more codemirror options, 更多 codemirror 的高级配置...
+      }
     }
   },
   methods: {

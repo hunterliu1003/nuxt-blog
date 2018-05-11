@@ -67,6 +67,7 @@ export default {
     list-style-type none
     &.disabled
       border none
+      padding-left 0
   .the-tag
     padding 5px 20px 5px 12px
     margin 0 8px 0 0
@@ -80,7 +81,7 @@ export default {
       cursor pointer
       transition all 300ms ease
       &:hover
-        background-color #303030
+        background-color #212121
 
   .the-tag-input
     padding 5px 0

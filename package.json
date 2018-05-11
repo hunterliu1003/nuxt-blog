@@ -20,13 +20,19 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/markdownit": "^1.2.1",
+    "codemirror": "^5.37.0",
     "express": "^4.15.3",
     "firebase": "^4.12.1",
+    "highlight.js": "^9.12.0",
     "js-cookie": "^2.2.0",
     "lodash.debounce": "^4.0.8",
     "markdown-it": "^8.4.1",
     "markdown-it-attrs": "^1.2.1",
+    "markdown-it-highlightjs": "^3.0.0",
+    "markdown-it-playground": "^0.0.5",
     "nuxt": "^1.0.0",
+    "vue-codemirror": "^4.0.5",
     "vuetify": "^0.17.3"
   },
   "devDependencies": {

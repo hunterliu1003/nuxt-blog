@@ -1,132 +1,96 @@
 <template lang="pug">
   //- v-layout.posts-post-markdown(tag="article")
-  .posts-post-markdown
-    div(v-html="contentHtml")
+  .posts-post-markdown(v-html="md")
 </template>
 
 <script>
-import MarkdownIt from 'markdown-it'
-import markdownItAttrs from 'markdown-it-attrs'
 import debounce from 'lodash.debounce'
-// import hljs from 'highlightjs'
-// import markdownItHighlightjs from 'markdown-it-highlightjs'
-const md = new MarkdownIt({
-  html: true,
-  linkify: true,
-  typographer: true,
-  langPrefix:   'language-',
-  // highlight: function (str, lang) {
-  //   if (lang && hljs.getLanguage(lang)) {
-  //     try {
-  //       return '<pre class="hljs"><code>' +
-  //              hljs.highlight(lang, str, true).value +
-  //              '</code></pre>';
-  //     } catch (__) {}
-  //   }
-
-  //   return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-  // }
-})
-md.use(markdownItAttrs)
-// md.use(markdownItHighlightjs)
 
 export default {
-  name: 'PostsPostMarkdown',
-  components: {
-  },
   props: {
     markdownText: {
       type: String,
-      default () {
-        return ''
-      }
-    },
-    delay: {
-      type: Number,
-      default () {
-        return 1000
-      }
+      required: true
     }
   },
   data () {
     return {
-      contentHtml: ''
+      md: this.markdownText,
+      delay: 1000
     }
   },
-  watch: {
+  watch:{
     markdownText () {
-      this.update(this.delay)()
-    }
-  },
-  created () {
-    this.render(this.markdownText)
-  },
-  methods: {
-    update (delay) {
-      return debounce(() => {
-        this.render(this.markdownText)
-      }, delay)
-    },
-    render (markdownText) {
-      this.contentHtml = md.render(markdownText)
+      debounce(() => {
+        this.md = this.$md.render(this.markdownText)
+      }, this.delay)()
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
+@import '~vuetify/src/stylus/app'
+
 .posts-post-markdown
   width 100%
 >>> a
-  color #fff
->>> h1,
->>> h2,
->>> h3,
->>> h4,
->>> h5,
->>> h6,
->>> p
+  color: $light-blue.darken-1
+  &:hover
+    color: $light-blue.lighten-2
+>>> h1, >>> h2, >>> h3, >>> h4, >>> h5, >>> h6, >>> p
   word-wrap break-word
 
+>>> h1, >>> h2, >>> h3, >>> h4, >>> h5, >>> h6
+  color #41B883
+  padding 5px 0
 >>> h1
   font-size 2.6em
-  color #41B883
-  padding-top 5px
-  padding-bottom 5px
 >>> h2
   font-size 2.2em
-  color #41B883
-  padding-top 5px
-  padding-bottom 5px
 >>> h3
   font-size 2.0em
-  color #41B883
-  padding-top 5px
-  padding-bottom 5px
 >>> h4
   font-size 1.7em
-  color #41B883
-  padding-top 5px
-  padding-bottom 5px
 >>> h5
   font-size 1.5em
-  color #41B883
-  padding-top 5px
-  padding-bottom 5px
 >>> h6
   font-size 1.4em
-  color #41B883
-  padding-top 5px
-  padding-bottom 5px
 
->>> code
+>>> code:before, >>> code:after
+    content none
+
+>>> p code,
+>>> li code,
+>>> h1 code,
+>>> h2 code,
+>>> h3 code,
+>>> h4 code,
+>>> h5 code,
+>>> h6 code
   color #41B883
-  font-weight 100
+  padding 0 5px
+  margin 0 5px
+
+>>> pre,
+>>> iframe
+  padding 10px 0
 
 >>> p
   font-size 1.2em
   margin 0
+  color: $grey.lighten-2
+
+>>> ul,
+>>> ol
+  list-style-position inside
 
 >>> li
   font-size 1.2em
+  color: $grey.lighten-2
+
+>>> blockquote
+  border-left: 4px solid $green.lighten-2
+  background-color: $grey.darken-3
+  padding 5px
 </style>

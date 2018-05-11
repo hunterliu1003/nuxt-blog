@@ -1,12 +1,11 @@
 <template lang="pug">
-  v-container
+  v-container(fluid)
     v-layout(tag="section")
-      v-flex(xs12)
-        h1 {{ loadedPost.title }}
-        div Last updated on {{ loadedPost.postTime | date }}
+      v-flex.post-list(xs12)
+        h1.display-2.grey--text.text--lighten-2 {{ loadedPost.title }}
+        div.title.grey--text.text--lighten-2.mt-2 {{ loadedPost.postTime | date }}
         TheInputTags(v-model="loadedPost.tags" disabled)
-        div Written by Hunter Liu
-        PostsPostMarkdown(:markdown-text="loadedPost.content")
+        PostsPostMarkdown(:markdown-text="$md.render(loadedPost.content)")
 </template>
 
 <script>
@@ -38,4 +37,10 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+.post-list
+  width 100%
+  max-width 1264px
+</style>
 

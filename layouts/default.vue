@@ -32,7 +32,7 @@
   padding 0
 .default-content
   padding-top 40px
-  padding-left 300px
+  padding-left 280px
 .footer
   z-index 2
 @media only screen and (max-width: 768px)

@@ -34,7 +34,7 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fa923f' },
+  loading: { color: '#41B883' },
 
   /*
   ** Global CSS
@@ -42,7 +42,11 @@ module.exports = {
   css: [
     // '~assets/stylus/reset.styl',
     '~assets/stylus/base.styl',
-    'vuetify/src/stylus/main.styl'
+    'vuetify/src/stylus/main.styl',
+    'highlight.js/styles/default.css',
+    'highlight.js/styles/monokai-sublime.css',
+    'codemirror/lib/codemirror.css',
+    'codemirror/theme/monokai.css',
   ],
 
   /*
@@ -51,14 +55,16 @@ module.exports = {
   plugins: [
     '@/plugins/core-components.js',
     '@/plugins/vuetify',
-    '@/plugins/filters/date.js'
+    '@/plugins/filters/date.js',
+    { src: '@/plugins/nuxt-codemirror-plugin.js', ssr: false },
   ],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/markdownit'
   ],
 
   /*
@@ -70,6 +76,22 @@ module.exports = {
     credentials: false
   },
 
+  /*
+  ** markdownit module configuration
+  */
+  markdownit: {
+    // See https://github.com/nuxt-community/modules/tree/master/packages/markdownit
+    html: true,
+    linkify: true,
+    typographer: true,
+    langPrefix: 'language-',
+    injected: true, // use this.$md.render
+    use: [
+      'markdown-it-attrs',
+      'markdown-it-highlightjs',
+      'markdown-it-playground',
+    ]
+  },
   /*
   ** Build configuration
   */

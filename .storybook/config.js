@@ -6,8 +6,11 @@ import Vuetify from 'vuetify'
 import colors from 'vuetify/es5/util/colors'
 import 'babel-polyfill'
 import '@/plugins/filters/date'
-// import Sortable from 'vue-sortable'
-Vue.use(Vuex);
+import '@/plugins/nuxt-codemirror-plugin.js'
+import MarkdownIt from '@/plugins/markdownit'
+
+Vue.use(Vuex)
+
 Vue.use(Vuetify, {
   theme: {
     primary: '#121212', // a color that is not in the material colors palette
@@ -19,17 +22,20 @@ Vue.use(Vuetify, {
     success: colors.green.accent3
   }
 })
-// Vue.directive('sortable', {
-//   inserted: function (el, binding) {
-//     new Sortable(el, binding.value || {})
-//   }
-// })
+Vue.use(MarkdownIt)
 Vue.component('nuxt-link', {
   template: `<a><slot></slot></a>`
 })
+Vue.component('no-ssr', {
+  template: `<div><slot></slot></div>`
+})
 
-import 'vuetify/dist/vuetify.css'
 import '!!style-loader!css-loader!stylus-loader!../assets/stylus/base.styl'
+import 'vuetify/dist/vuetify.css'
+import 'highlight.js/styles/default.css'
+import 'highlight.js/styles/monokai-sublime.css'
+import 'codemirror/lib/codemirror.css'
+import 'codemirror/theme/monokai.css'
 
 setOptions({
   name: 'ht-storybook',

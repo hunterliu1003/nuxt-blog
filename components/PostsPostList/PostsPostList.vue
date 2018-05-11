@@ -13,11 +13,7 @@
 </template>
 
 <script>
-import PostsPostPreview from '@/components/PostsPostPreview'
 export default {
-  components: {
-    PostsPostPreview
-  },
   props: {
     isAdmin: {
       type: Boolean,

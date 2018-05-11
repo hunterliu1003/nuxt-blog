@@ -16,7 +16,9 @@ storiesOf('PostsPostPreview', module)
   .add('PostsPostPreview', withReadme(README, () => ({
     data () {
       return {
-        loadedPost: {},
+        loadedPost: {
+          previewText: ''
+        },
         isAdmin: true
       }
     },

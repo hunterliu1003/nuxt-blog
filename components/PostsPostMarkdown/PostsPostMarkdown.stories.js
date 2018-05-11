@@ -40,6 +40,6 @@ storiesOf('PostsPostMarkdown', module)
       pug
       `v-app(dark)
         v-container(fluid)
-          PostsPostMarkdown(:markdown-text="mdText") `
+          PostsPostMarkdown(:markdown-text="$md.render(mdText)") `
     )
   })));

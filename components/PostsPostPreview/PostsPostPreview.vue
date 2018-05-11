@@ -1,17 +1,18 @@
 <template lang="pug">
-  v-card.white--text.mt-3(tag="article" color="cyan darken-2")
+  v-card.mt-3.grey.darken-4(tag="article")
     v-card-title
       div.post-preview
-        h1.display-1
-          nuxt-link(:to="postLink" class="white--text") {{ title }}
+        h1.display-1.grey--text.text--lighten-2
+          nuxt-link.grey--text.text--lighten-2(:to="postLink") {{ title }}
         p.caption {{ lastUpdateTime | date }}
-        nuxt-link(:to="postLink" class="white--text")
-          PostsPostMarkdown(:markdownText="previewText")
-    v-card-actions
+        nuxt-link.ht-post-preview--text(:to="postLink")
+          PostsPostMarkdown(:markdownText="$md.render(previewText)")
+    v-card-actions.pl-3
       TheInputTags(v-model="tags" disabled)
 </template>
 
 <script>
+
 export default {
   props: {
     id: {
@@ -51,6 +52,6 @@ export default {
 <style lang="stylus" scoped>
 .post-preview
   width 100%
-a
-  margin: 0
+// a
+//   margin: 0
 </style>
