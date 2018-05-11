@@ -3,7 +3,7 @@
 > My Nuxt.js blog
 
 [Live Demo](http://hunterliu1003.github.io/nuxt-blog/)
-[Live Demo Storybook]()
+[Live Demo Storybook](http://hunterliu1003.github.io/nuxt-blog-storybook/)
 --- on working ---
 
 ## Supported Browsers
