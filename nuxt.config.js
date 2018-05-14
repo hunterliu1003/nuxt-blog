@@ -72,7 +72,8 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com',
+    // baseURL: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com',
+    baseURL: process.env.BASE_URL || 'https://firestore.googleapis.com/v1beta1/projects/nuxt-blog-e0f9a/databases/(default)/documents/',
     credentials: false
   },
 

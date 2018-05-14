@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import convert from 'firebase-firestore-fields'
+
 export default {
   head () {
     return {
@@ -19,18 +21,13 @@ export default {
     }
   },
   asyncData(context) {
-    if (context.payload) {
-      return {
-        loadedPost: context.payload.postData
-      }
-    }
-    return context.app.$axios.$get(
-        '/posts/' +
-        context.params.id +
-        '.json')
+    return context.app.$axios.$get('posts/' + context.params.id)
       .then(data => {
         return {
-          loadedPost: data
+          loadedPost: {
+            id: context.params.postId,
+            ...convert(data.fields)
+          }
         }
       })
       .catch(e => context.error())

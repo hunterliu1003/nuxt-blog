@@ -1,17 +1,20 @@
 import Vuex from 'vuex'
 import * as firebase from 'firebase'
 import config from '@/firebase.config.js'
+import 'firebase/firestore'
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
 }
+
+const db = firebase.firestore()
+
 const createStore = () => {
   return new Vuex.Store({
     state: {
       // token: null,
       uid: null,
       loadedPosts: []
-
     },
     mutations: {
       setPosts(state, posts) {
@@ -41,38 +44,28 @@ const createStore = () => {
     },
     actions: {
       addPost ({ commit, state }, post) {
-        return firebase.auth().currentUser.getIdToken(true)
-          .then(idToken => {
-            this.$axios.$post('/posts.json?auth=' + idToken, post)
-              .then(data => {
-                commit('addPost', { ...post, id: data.name })
-              })
-              .catch(e => console.log(e))
+        return db.collection('posts').add({ ...post })
+          .then(data => {
+            commit('addPost', { ...post, id: data.id })
           })
-          .catch(e => console.log(e))
       },
       editPost ({ commit, state }, editedPost) {
-        return firebase.auth().currentUser.getIdToken(true)
-          .then(idToken => {
-            this.$axios.$put('/posts/' + editedPost.id + '.json?auth=' + idToken, editedPost)
-              .then(data => {
-                commit('editPost', editedPost)
-              })
-              .catch(e => console.log(e))
+        return db.collection('posts').doc(editedPost.id).update(editedPost)
+          .then(data => {
+            commit('editPost', editedPost)
           })
           .catch(e => console.log(e))
       },
       async setPosts ({ commit, state }) {
         if (state.loadedPosts.length !== 0) return
-        await this.$axios.$get('/posts.json')
-          .then(data => {
+        await db.collection('posts').orderBy('postTime').get()
+          .then(snapshot => {
             const postsArray = []
-            for (const key in data) {
-              postsArray.push({ ...data[key], id: key })
-            }
+            snapshot.forEach(doc => {
+              postsArray.push({ ...doc.data(), id: doc.id })
+            })
             commit('setPosts', postsArray)
           })
-          .catch(e => context.error())
       },
       authenticateUser ({ commit }, authData) {
         return firebase.auth().signInWithEmailAndPassword(authData.email, authData.password)

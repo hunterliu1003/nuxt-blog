@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import convert from 'firebase-firestore-fields'
 import AdminPostForm from '@/components/AdminPostForm'
 
 export default {
@@ -15,14 +16,14 @@ export default {
   components: {
     AdminPostForm
   },
-  asyncData (context) {
-    return context.app.$axios.$get(
-        '/posts/' +
-        context.params.postId +
-        '.json')
+  asyncData(context) {
+    return context.app.$axios.$get('posts/' + context.params.postId)
       .then(data => {
         return {
-          loadedPost: { ...data, id: context.params.postId }
+          loadedPost: {
+            id: context.params.postId,
+            ...convert(data.fields)
+          }
         }
       })
       .catch(e => context.error())
