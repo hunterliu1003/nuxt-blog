@@ -93,4 +93,5 @@ export default {
   border-left: 4px solid $green.lighten-2
   background-color: $grey.darken-3
   padding 5px
+  margin 5px 0
 </style>
