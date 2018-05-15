@@ -2,7 +2,9 @@
 
 > My Nuxt.js blog
 
-[Live Demo](http://hunterliu1003.github.io/nuxt-blog/)
+[Live Demo Github Page](http://hunterliu1003.github.io/nuxt-blog/)
+
+[Live Demo Heroku](https://nuxt-blog.herokuapp.com)
 
 [Live Demo Storybook](http://hunterliu1003.github.io/nuxt-blog-storybook/)
 
