@@ -35,7 +35,11 @@ storiesOf('TheInputTags', module)
   .add('TheInputTags', withReadme(README, () => ({
     data () {
       return {
-        tags: ['tag1', 'tag2', 'tag3']
+        tags: {
+          tag1: true,
+          tag2: true,
+          tag3: true
+        }
       }
     },
     methods: {
