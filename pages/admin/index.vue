@@ -1,7 +1,7 @@
 <template lang="pug">
   v-content
     v-container
-      v-layout.intro(tag="section" column align-center mt-5)
+      v-layout.intro(tag="section" column align-center)
         h1.display-1 Existing Posts
         PostsPostList(isAdmin :posts="$store.getters.posts")
     v-btn(

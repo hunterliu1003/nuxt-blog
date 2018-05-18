@@ -7,7 +7,7 @@
         v-icon fas fa-plus
       v-btn(icon @click="onLogout")
         v-icon fas fa-sign-out-alt
-    nuxt.default-layout
+    nuxt.default-layout.mt-5
 </template>
 
 <script>
