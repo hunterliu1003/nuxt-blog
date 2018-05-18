@@ -36,7 +36,7 @@
     "markdown-it-playground": "^0.0.5",
     "nuxt": "^1.0.0",
     "vue-codemirror": "^4.0.5",
-    "vuetify": "^0.17.3"
+    "vuetify": "^1.0.18"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.3",
