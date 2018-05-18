@@ -7,8 +7,10 @@ import { withReadme }  from 'storybook-readme'
 import '@storybook/addon-console'
 import README from './README.md'
 import axios from 'axios'
+import convert from 'firebase-firestore-fields'
 
 import PostsPostPreview from './'
+
 
 Vue.component('PostsPostPreview', PostsPostPreview);
 
@@ -31,11 +33,9 @@ storiesOf('PostsPostPreview', module)
         action('PostsPostPreview')();
       },
       getPost () {
-        axios.get('https://nuxt-blog-e0f9a.firebaseio.com/posts.json?orderBy="postTime"&limitToLast=1')
+        axios.get('https://firestore.googleapis.com/v1beta1/projects/nuxt-blog-e0f9a/databases/(default)/documents/posts/Lt9V3OHuzmgy7dAfLQab')
           .then(res => {
-            for (const key in res.data) {
-              this.loadedPost = { ...res.data[key], id: key }
-            }
+            this.loadedPost = { ...convert(res.data.fields) }
           })
           .catch(e => console.log(e))
       }

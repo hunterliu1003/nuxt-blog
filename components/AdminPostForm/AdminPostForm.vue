@@ -49,7 +49,7 @@
         :disabled="!valid"
       ) submit
       v-btn(
-        @click="cancel"
+        nuxt to="/admin"
       ) cancel
       v-btn(
         small
@@ -103,9 +103,6 @@ export default {
       if (this.$refs.form.validate()) {
         this.$emit('submit', this.editedPost)
       }
-    },
-    cancel () {
-      this.$router.push('/admin')
     }
   }
 }

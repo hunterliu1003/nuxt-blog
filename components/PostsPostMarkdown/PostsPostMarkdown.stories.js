@@ -7,6 +7,7 @@ import { withReadme }  from 'storybook-readme'
 import '@storybook/addon-console'
 import README from './README.md'
 import axios from 'axios'
+import convert from 'firebase-firestore-fields'
 
 import PostsPostMarkdown from './'
 
@@ -28,11 +29,9 @@ storiesOf('PostsPostMarkdown', module)
         action('PostsPostMarkdown')()
       },
       getPost () {
-        axios.get('https://nuxt-blog-e0f9a.firebaseio.com/posts.json?orderBy="postTime"&limitToLast=1')
+        axios.get('https://firestore.googleapis.com/v1beta1/projects/nuxt-blog-e0f9a/databases/(default)/documents/posts/Lt9V3OHuzmgy7dAfLQab')
           .then(res => {
-            for (const key in res.data) {
-              this.mdText = res.data[key].content
-            }
+            this.mdText = convert(res.data.fields).content
           })
           .catch(e => console.log(e))
       }
