@@ -3,6 +3,7 @@ import * as firebase from 'firebase'
 import config from '@/firebase.config.js'
 import 'firebase/firestore'
 
+
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
 }
@@ -14,14 +15,18 @@ const createStore = () => {
     state: {
       // token: null,
       uid: null,
-      loadedPosts: []
+      loadedPosts: [],
+      allTags: null
     },
     mutations: {
       setPosts(state, posts) {
         state.loadedPosts = posts
       },
+      setAllTags(state, allTags) {
+        state.allTags = allTags
+      },
       addPost (state, post) {
-        state.loadedPosts.push(post)
+        state.loadedPosts.unshift(post)
       },
       editPost(state, editedPost) {
         const postIndex = state.loadedPosts.findIndex(
@@ -51,21 +56,61 @@ const createStore = () => {
       },
       editPost ({ commit, state }, editedPost) {
         return db.collection('posts').doc(editedPost.id).update(editedPost)
-          .then(data => {
+          .then(() => {
             commit('editPost', editedPost)
           })
           .catch(e => console.log(e))
       },
       async setPosts ({ commit, state }) {
-        if (state.loadedPosts.length !== 0) return
-        await db.collection('posts').orderBy('postTime').get()
-          .then(snapshot => {
+        // if (state.loadedPosts.length !== 0) return
+        await db.collection('posts').where('isShow', '==', true).orderBy('postTime', 'desc').get()
+          .then(docs => {
             const postsArray = []
-            snapshot.forEach(doc => {
+            docs.forEach(doc => {
               postsArray.push({ ...doc.data(), id: doc.id })
             })
             commit('setPosts', postsArray)
           })
+      },
+      async setAdminPosts ({ commit, state }) {
+        // if (state.loadedPosts.length !== 0) return
+        await db.collection('posts').orderBy('postTime', 'desc').get()
+          .then(docs => {
+            const postsArray = []
+            docs.forEach(doc => {
+              postsArray.push({ ...doc.data(), id: doc.id })
+            })
+            commit('setPosts', postsArray)
+          })
+      },
+      async setTagsPosts ({ commit, state }, tag) {
+        await db.collection('posts').where('isShow', '==', true).where(`tags.${tag}`, '==', true).get()
+          .then(docs => {
+            const postsArray = []
+            docs.forEach(doc => {
+              postsArray.push({ ...doc.data(), id: doc.id })
+            })
+            commit('setPosts', postsArray)
+          })
+      },
+      async setAllTags ({ commit, state }) {
+        if (state.allTags !== null) return
+        let allTags = await db.collection('posts').get()
+          .then(docs => {
+            let allTags = {}
+            docs.forEach(doc => {
+              allTags = Object.assign(allTags, doc.data().tags)
+            })
+            return allTags
+          })
+        const promises = Object.keys(allTags).map((tag) => {
+          return db.collection('posts').where(`tags.${tag}`, '==', true).get()
+            .then(docs => {
+              allTags[tag] = docs.size
+            })
+        })
+        await Promise.all(promises)
+        commit('setAllTags', allTags)
       },
       authenticateUser ({ commit }, authData) {
         return firebase.auth().signInWithEmailAndPassword(authData.email, authData.password)
@@ -92,6 +137,9 @@ const createStore = () => {
     getters: {
       posts (state) {
         return state.loadedPosts
+      },
+      allTags (state) {
+        return state.allTags
       }
     }
   })

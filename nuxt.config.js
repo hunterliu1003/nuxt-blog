@@ -72,8 +72,6 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    // baseURL: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com',
-    baseURL: process.env.BASE_URL || 'https://firestore.googleapis.com/v1beta1/projects/nuxt-blog-e0f9a/databases/(default)/documents/',
     credentials: false
   },
 
@@ -119,9 +117,10 @@ module.exports = {
       }
     }
   },
-  // env: {
-  //   baseUrl: process.env.BASE_URL || 'https://nuxt-blog-e0f9a.firebaseio.com'
-  // },
+  env: {
+    fbUrl: 'https://nuxt-blog-e0f9a.firebaseio.com/',
+    fsUrl: 'https://firestore.googleapis.com/v1beta1/projects/nuxt-blog-e0f9a/databases/(default)/documents/'
+  },
   ...routerBase,
   generate: {
     dir: (process.env.DEPLOY_ENV === 'GH_PAGES') ? 'nuxt-blog' : 'dist',

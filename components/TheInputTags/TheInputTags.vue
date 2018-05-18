@@ -1,25 +1,30 @@
 <template lang="pug">
   ul.the-tags(:class="{ disabled }")
     li.the-tag(
-      v-for="(tag, index) in value"
-      :key="tag + index"
+      v-for="(val, tag) in value"
+      :key="tag"
       :class="{ disabled }"
-      @click="to"
+      @click="to(tag)"
     )
       | {{ tag }}
-      span(@click.stop="tagRemove(index)" v-if="!disabled")
+      span(@click.stop="tagRemove(tag)" v-if="!disabled")
         v-icon.tag-remove fas fa-times
     li.the-tag-input(v-if="!disabled")
-      input(type="text" v-model="tagInput" @keyup.enter="tagAdd" autofocus)
+      input(
+        type="text"
+        v-model="tagInput"
+        @keyup.enter="tagAdd"
+        ref="tagInput"
+        autofocus)
 </template>
 
 <script>
 export default {
   props: {
     value: {
-      type: Array,
+      type: Object,
       default () {
-        return []
+        return {}
       }
     },
     disabled: {
@@ -36,21 +41,23 @@ export default {
   },
   computed: {
     isDuplicated () {
-      return this.value.find(tag => tag === this.tagInput)
+      return this.value.hasOwnProperty(this.tagInput)
     }
   },
   methods: {
     tagAdd () {
       if (this.tagInput === '') return
       if (this.isDuplicated) return
-      this.value.push(this.tagInput)
+      this.value[this.tagInput] = true
       this.tagInput = ''
     },
-    tagRemove (index) {
-      this.value.splice(index, 1)
+    tagRemove (tag) {
+      delete this.value[tag]
+      this.$forceUpdate()
+      this.$refs.tagInput.focus()
     },
-    to () {
-      this.disabled && this.$router && this.$router.push('/')
+    to (tag) {
+      this.disabled && this.$router && this.$router.push('/tags/' + tag)
     }
   }
 }

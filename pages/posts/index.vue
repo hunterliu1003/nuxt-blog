@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  async fetch ({ store, params }) {
+  async fetch ({ store }) {
     await store.dispatch('setPosts')
   }
 }

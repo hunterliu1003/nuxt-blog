@@ -5,7 +5,7 @@
   "author": "Hunter",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "dev": "cross-env NODE_ENV=development HOST=0.0.0.0 PORT=3000 nuxt",
     "storybook": "start-storybook -p 9000 -c .storybook",
     "build": "nuxt build",
     "start": "cross-env NODE_ENV=production node server/index.js",
@@ -29,7 +29,7 @@
     "highlight.js": "^9.12.0",
     "highlightjs": "^9.10.0",
     "js-cookie": "^2.2.0",
-    "lodash.debounce": "^4.0.8",
+    "lodash": "^4.17.10",
     "markdown-it": "^8.4.1",
     "markdown-it-attrs": "^1.2.1",
     "markdown-it-highlightjs": "^3.0.0",

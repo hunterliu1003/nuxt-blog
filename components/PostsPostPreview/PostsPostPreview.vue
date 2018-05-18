@@ -1,13 +1,13 @@
 <template lang="pug">
   v-card.mt-3.grey.darken-4(tag="article")
-    v-card-title
+    v-card-title.pb-0
       div.post-preview
         h1.display-1.grey--text.text--lighten-2
           nuxt-link.grey--text.text--lighten-2(:to="postLink") {{ title }}
         p.caption {{ lastUpdateTime | date }}
         nuxt-link.ht-post-preview--text(:to="postLink")
           PostsPostMarkdown(:markdownText="$md.render(previewText)")
-    v-card-actions.pl-3
+    v-card-actions.pl-3.pt-0
       TheInputTags(v-model="tags" disabled)
 </template>
 
@@ -36,7 +36,7 @@ export default {
       required: false
     },
     tags: {
-      type: [Array, String],
+      type: Object,
       required: false
     }
   },

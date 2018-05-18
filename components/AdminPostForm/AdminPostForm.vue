@@ -4,6 +4,11 @@
       ref="form"
       lazy-validation
     )
+      v-switch(
+        label="Show"
+        v-model="editedPost.isShow"
+        color="white"
+      )
       v-text-field(
         label="Title"
         v-model="editedPost.title"
@@ -46,6 +51,15 @@
       v-btn(
         @click="cancel"
       ) cancel
+      v-btn(
+        small
+        fab
+        fixed
+        bottom
+        right
+        @click="submit"
+      )
+        v-icon send
 </template>
 
 <script>
@@ -61,8 +75,9 @@ export default {
       editedPost: this.post
         ? { ...this.post }
         : {
+            isShow: true,
             title: '',
-            tags: [],
+            tags: {},
             previewText: '',
             content: '',
             lastUpdateTime: Date.now(),

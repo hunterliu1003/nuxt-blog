@@ -13,7 +13,7 @@
             h2.d-none 關於我、文章列表和標籤列表
             nuxt-link.white--text.text-xs-center(to="/about") 關於我
             nuxt-link.white--text.text-xs-center(to="/posts") 文章列表
-            nuxt-link.white--text.text-xs-center(to="/tabs") 標籤列表
+            nuxt-link.white--text.text-xs-center(to="/tags") 標籤列表
       v-layout.default-content
         nuxt
     v-footer.black-lighten-1.default-footer(app)

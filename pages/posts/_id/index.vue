@@ -21,7 +21,7 @@ export default {
     }
   },
   asyncData(context) {
-    return context.app.$axios.$get('posts/' + context.params.id)
+    return context.app.$axios.$get(context.env.fsUrl + 'posts/' + context.params.id)
       .then(data => {
         return {
           loadedPost: {
@@ -40,4 +40,3 @@ export default {
   width 100%
   max-width 1264px
 </style>
-
