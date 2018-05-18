@@ -3,8 +3,6 @@
     v-toolbar(fixed)
       nuxt-link.title(nuxt to="/") Hunterliu
       v-spacer
-      v-btn(icon nuxt to="/admin/new-post")
-        v-icon fas fa-plus
       v-btn(icon @click="onLogout")
         v-icon fas fa-sign-out-alt
     nuxt.default-layout.mt-5
