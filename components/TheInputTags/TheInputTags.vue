@@ -15,7 +15,7 @@
         v-model="tagInput"
         @keyup.enter="tagAdd"
         ref="tagInput"
-        autofocus)
+      )
 </template>
 
 <script>
@@ -54,7 +54,7 @@ export default {
     tagRemove (tag) {
       delete this.value[tag]
       this.$forceUpdate()
-      this.$refs.tagInput.focus()
+      // this.$refs.tagInput.focus()
     },
     to (tag) {
       this.disabled && this.$router && this.$router.push('/tags/' + tag)
