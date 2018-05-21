@@ -47,7 +47,7 @@ Addons:
 - Highlight.js
 - Markdown-It
 - Codemirror
-- Loadash
+- Lodash
 - Axios
 - Heroku
 - Pug
