@@ -6,6 +6,8 @@
 
 [Live Demo Heroku](https://nuxt-blog.herokuapp.com)
 
+[Live Demo Firebase Hosting](https://hunterliu.cf)
+
 [Live Demo Storybook](http://hunterliu1003.github.io/nuxt-blog-storybook/)
 
 --- on working ---
