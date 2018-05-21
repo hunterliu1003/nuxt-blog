@@ -18,13 +18,13 @@
 
 ## Application Architecture
 
-### Vue.js
+### [Vue.js](https://vuejs.org/)
 
-### Nuxt.js
+### [Nuxt.js](https://nuxtjs.org)
 
-### Vuetify
+### [Vuetify](https://vuetifyjs.com/en/)
 
-### Storybook
+### [Storybook](https://github.com/storybooks/storybook)
 
 Addons:
 
@@ -43,15 +43,15 @@ Addons:
 
 ### Others
 
-- Plop
-- Highlight.js
-- Markdown-It
-- Codemirror
-- Lodash
-- Axios
-- Heroku
-- Pug
-- Stylus
+- [Plop](https://www.npmjs.com/package/plop)
+- [Highlight.js](https://highlightjs.org/)
+- [Markdown-It](https://github.com/markdown-it/markdown-it)
+- [Codemirror](https://codemirror.net/)
+- [Lodash](https://lodash.com/)
+- [Axios](https://github.com/axios/axios)
+- [Heroku](https://www.heroku.com/platform)
+- [Pug](https://pugjs.org/api/getting-started.html)
+- [Stylus](http://stylus-lang.com/)
 
 ## Build Setup
 
