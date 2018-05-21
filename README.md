@@ -1,3 +1,5 @@
+--- on working ---
+
 # nuxt-blog
 
 > My Nuxt.js blog
@@ -10,11 +12,46 @@
 
 [Live Demo Storybook](http://hunterliu1003.github.io/nuxt-blog-storybook/)
 
---- on working ---
-
 ## Supported Browsers
 
 - IE9/IE10 not supported
+
+## Application Architecture
+
+### Vue.js
+
+### Nuxt.js
+
+### Vuetify
+
+### Storybook
+
+Addons:
+
+- addon-actions
+- addon-centered
+- addon-console
+- addon-options
+- addon-storysource
+- addon-viewport
+
+### Firebase
+
+- Firestore
+- Authentication
+- Hosting
+
+### Others
+
+- Plop
+- Highlight.js
+- Markdown-It
+- Codemirror
+- Loadash
+- Axios
+- Heroku
+- Pug
+- Stylus
 
 ## Build Setup
 
