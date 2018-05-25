@@ -48,20 +48,51 @@ const createStore = () => {
       }
     },
     actions: {
-      addPost ({ commit, state }, post) {
+      addPost ({ commit }, post) {
         return db.collection('posts').add({ ...post })
           .then(data => {
             commit('addPost', { ...post, id: data.id })
           })
       },
-      editPost ({ commit, state }, editedPost) {
+      editPost ({ commit }, editedPost) {
+        db.collection('posts').get()
+          .then(docs => {
+            let allTags = {}
+            docs.forEach(doc => {
+              allTags = Object.assign(allTags, doc.data().tags)
+            })
+            return allTags
+          })
+          .then(allTags => {
+            let tagsCount = {}
+            const promises = Object.keys(allTags).map((tag) => {
+              return db.collection('posts').where(`tags.${tag}`, '==', true).get()
+                .then(docs => {
+                  return {
+                    tag,
+                    size: docs.size
+                  }
+                })
+            })
+            return Promise.all(promises)
+          })
+          .then(tagsArray => {
+            let tagsCount = {}
+            tagsArray.forEach(tags => {
+              tagsCount[tags.tag] = tags.size
+            })
+            db.collection('tags').doc('tags').set(tagsCount)
+              .then(() => {
+                commit('setAllTags', tagsCount)
+              })
+          })
         return db.collection('posts').doc(editedPost.id).update(editedPost)
           .then(() => {
             commit('editPost', editedPost)
           })
           .catch(e => console.log(e))
       },
-      async setPosts ({ commit, state }) {
+      async setPosts ({ commit }) {
         // if (state.loadedPosts.length !== 0) return
         await db.collection('posts').where('isShow', '==', true).orderBy('postTime', 'desc').get()
           .then(docs => {
@@ -72,7 +103,7 @@ const createStore = () => {
             commit('setPosts', postsArray)
           })
       },
-      async setAdminPosts ({ commit, state }) {
+      async setAdminPosts ({ commit }) {
         // if (state.loadedPosts.length !== 0) return
         await db.collection('posts').orderBy('postTime', 'desc').get()
           .then(docs => {
@@ -83,7 +114,7 @@ const createStore = () => {
             commit('setPosts', postsArray)
           })
       },
-      async setTagsPosts ({ commit, state }, tag) {
+      async setTagsPosts ({ commit }, tag) {
         await db.collection('posts').where('isShow', '==', true).where(`tags.${tag}`, '==', true).get()
           .then(docs => {
             const postsArray = []
@@ -94,23 +125,10 @@ const createStore = () => {
           })
       },
       async setAllTags ({ commit, state }) {
-        if (state.allTags !== null) return
-        let allTags = await db.collection('posts').get()
-          .then(docs => {
-            let allTags = {}
-            docs.forEach(doc => {
-              allTags = Object.assign(allTags, doc.data().tags)
-            })
-            return allTags
+        await db.collection('tags').doc('tags').get()
+          .then(doc => {
+            commit('setAllTags', doc.data())
           })
-        const promises = Object.keys(allTags).map((tag) => {
-          return db.collection('posts').where(`tags.${tag}`, '==', true).get()
-            .then(docs => {
-              allTags[tag] = docs.size
-            })
-        })
-        await Promise.all(promises)
-        commit('setAllTags', allTags)
       },
       authenticateUser ({ commit }, authData) {
         return firebase.auth().signInWithEmailAndPassword(authData.email, authData.password)
