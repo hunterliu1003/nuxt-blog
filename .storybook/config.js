@@ -26,10 +26,16 @@ Vue.use(Vuetify, {
 })
 Vue.use(MarkdownIt)
 Vue.component('nuxt-link', {
-  template: `<a><slot></slot></a>`
+  functional: true,
+  render: function (createElement, context) {
+    return createElement('a', context.children)
+  }
 })
 Vue.component('no-ssr', {
-  template: `<div><slot></slot></div>`
+  functional: true,
+  render: function (createElement, context) {
+    return context.children
+  }
 })
 
 import '!!style-loader!css-loader!stylus-loader!../assets/stylus/base.styl'

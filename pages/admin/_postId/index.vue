@@ -4,7 +4,7 @@
       v-layout(column)
         v-flex(xs12 sm10 offset-sm1 lg8 offset-lg2)
           h1.heading.mb-3.text-xs-center Edit Post
-          AdminPostForm(:post="loadedPost" @submit="onSubmitted")
+          AdminPostForm(:post="loadedPost" @submit="onSubmitted" @cancel="onCancel")
 </template>
 
 <script>
@@ -35,6 +35,9 @@ export default {
         .then(() => {
           this.$router.push('/admin')
         })
+    },
+    onCancel () {
+      this.$router.push('/admin')
     }
   }
 }

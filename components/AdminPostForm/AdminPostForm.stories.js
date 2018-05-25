@@ -15,14 +15,17 @@ storiesOf('AdminPostForm', module)
   // .addDecorator(centered)
   .add('AdminPostForm', withReadme(README, () => ({
     methods: {
-      log() {
-        action('AdminPostForm')()
+      log(data) {
+        action('AdminPostForm')(data)
       },
     },
     template: (
       pug
       `v-app(dark)
         v-container(fluid)
-          AdminPostForm `
+          AdminPostForm(
+            @submit="log"
+            @cancel="log('cancel')"
+          ) `
     )
   })))
