@@ -1,6 +1,6 @@
---- on working ---
-
 # nuxt-blog
+
+--- on working ---
 
 > My Nuxt.js blog
 
@@ -74,4 +74,11 @@ $ yarn run generate:github
 # add .nojekyll empty file to root
 ```
 
-For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+## Article
+
+- 前言/目錄
+- Nuxt.js
+- Vuetify
+- Storybook
+- Plop
+- Highlight.js

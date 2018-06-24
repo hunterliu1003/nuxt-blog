@@ -3,6 +3,7 @@ import * as firebase from 'firebase'
 import config from '@/firebase.config.js'
 import 'firebase/firestore'
 
+// firebase.firestore().settings({timestampsInSnapshots: true});
 
 if (!firebase.apps.length) {
   firebase.initializeApp(config)
